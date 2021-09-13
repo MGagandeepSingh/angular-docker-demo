@@ -1,0 +1,43 @@
+<div class="main-container">
+  <div class="head">
+    <h2>ADD MOVIE DETAILS</h2>
+  </div>
+  <div *ngIf="displayError">
+    <div class="error">
+      <div class="message">{{errorMessage}}</div>
+      <div class="closure" (click)="hideMessage()">x</div>
+    </div>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="form-container">
+      <div class="form-group">
+        <input id="name" type="text" formControlName="name"
+            placeholder="Movie name"
+            onfocus="this.placeholder = ''"
+            onblur="this.placeholder = 'Movie name'">
+        <textarea id="desc" type="text" formControlName="description"
+            placeholder="Movie description"
+            onfocus="this.placeholder = ''"
+            onblur="this.placeholder = 'Movie Description'"></textarea>
+      </div>
+      <div><button>Add Movie</button></div>
+    </div>
+  </form>
+</div>
+
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Movie</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies">
+      <td>{{movie.id}}</td>
+      <td>{{movie.name}}</td>
+      <td>{{movie.description}}</td>
+    </tr>
+  </tbody>
+</table>
